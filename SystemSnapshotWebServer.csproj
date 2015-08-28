@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A557130C-8D2E-4ECD-A870-DFDCF2C88AA1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SystemSnapshotWebServer</RootNamespace>
+    <AssemblyName>SystemSnapshotWebServer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>outlineCPU.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>sign.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SystemSnapshotWebServer.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentCommandLineParser">
+      <HintPath>Resources\libraries\FluentCommandLineParser.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NHttp">
+      <HintPath>Resources\libraries\NHttp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OpenHardwareMonitorLib, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\OpenHardwareMonitorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationArguments.cs" />
+    <Compile Include="ApplicationInfo.cs" />
+    <Compile Include="Components\HtmlTextWritterEx.cs" />
+    <Compile Include="Components\JavaScript.cs" />
+    <Compile Include="Core\Autorun\AutorunItem.cs" />
+    <Compile Include="Core\Autorun\AutorunManager.cs" />
+    <Compile Include="Core\Device\DeviceItem.cs" />
+    <Compile Include="Core\Device\DeviceManager.cs" />
+    <Compile Include="Core\Disk\DiskItem.cs" />
+    <Compile Include="Core\Disk\DiskManager.cs" />
+    <Compile Include="Core\Disk\DiskSmart.cs" />
+    <Compile Include="Core\Hardware\HardwareManager.cs" />
+    <Compile Include="Core\InstalledProgram\InstalledProgramItem.cs" />
+    <Compile Include="Core\InstalledProgram\InstalledProgramManager.cs" />
+    <Compile Include="Core\Managers.cs" />
+    <Compile Include="Core\Process\ProcessItem.cs" />
+    <Compile Include="Core\Process\ProcessManager.cs" />
+    <Compile Include="Core\SpecialFile\SpecialFileManager.cs" />
+    <Compile Include="Core\SpecialFile\SpecialFileItem.cs" />
+    <Compile Include="Core\Web\WebServer.cs" />
+    <Compile Include="EmbeddedAssembly.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="GUI\Forms\FrmServerOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\FrmServerOptions.Designer.cs">
+      <DependentUpon>FrmServerOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HtmlTemplate.cs" />
+    <Compile Include="Core\Malware\MalwareManager.cs" />
+    <Compile Include="Core\Malware\MalwareItem.cs" />
+    <Compile Include="Core\Malware\MalwareType.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\SpecialFiles.cs" />
+    <Compile Include="Reports\Report.cs" />
+    <Compile Include="Reports\SystemInfo.cs" />
+    <Compile Include="Reports\Hardware.cs" />
+    <Compile Include="Reports\Networks.cs" />
+    <Compile Include="Reports\PnPDevices.cs" />
+    <Compile Include="Reports\Processes.cs" />
+    <Compile Include="Reports\Services.cs" />
+    <Compile Include="Reports\Startup.cs" />
+    <Compile Include="Reports\Programs.cs" />
+    <Compile Include="Reports\Title.cs" />
+    <Compile Include="Reports\Version.cs" />
+    <Compile Include="SystemHelper.cs" />
+    <EmbeddedResource Include="GUI\Forms\FrmServerOptions.resx">
+      <DependentUpon>FrmServerOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="sign.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\template.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\libraries\OpenHardwareMonitorLib.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="outlineCPU.ico" />
+    <Content Include="Resources\data\malware.txt" />
+    <None Include="Resources\images\cloud.png" />
+    <None Include="Resources\images\eye.png" />
+    <EmbeddedResource Include="Resources\libraries\NHttp.dll" />
+    <EmbeddedResource Include="Resources\libraries\FluentCommandLineParser.dll" />
+    <None Include="Resources\executables\autorunsc.exe" />
+    <None Include="Resources\images\web.png" />
+    <None Include="Resources\images\folder_open.png" />
+    <None Include="Resources\images\open.png" />
+    <None Include="Resources\images\refresh.png" />
+    <None Include="Resources\images\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent Condition=" '$(OS)' == 'Windows_NT' ">"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\bin\signtool.exe" sign /f "$(ProjectDir)sign.pfx" /p mudar11 /v "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

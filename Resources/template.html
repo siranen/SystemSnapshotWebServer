@@ -1,0 +1,728 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex, nofolllow">
+        <meta name="author" content="Tiago Conceição">
+        <meta name="description" content="Collect the computer and system info at a given time in order to track issues or problems.">
+        <title>SystemSnapshotWebServer - <!--[TITLE]--></title>
+        <link href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/yeti/bootstrap.min.css" rel="stylesheet">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="http://cdn.datatables.net/plug-ins/1.10.6/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+        <style type="text/css">
+        /* XL Grids for Bootstrap */
+        .visible-xl,.visible-xl-block,.visible-xl-inline,.visible-xl-inline-block{display:none!important}@media (min-width:1600px){.container{width:1570px}.col-xl-1,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9{float:left}.col-xl-12{width:100%}.col-xl-11{width:91.66666667%}.col-xl-10{width:83.33333333%}.col-xl-9{width:75%}.col-xl-8{width:66.66666667%}.col-xl-7{width:58.33333333%}.col-xl-6{width:50%}.col-xl-5{width:41.66666667%}.col-xl-4{width:33.33333333%}.col-xl-3{width:25%}.col-xl-2{width:16.66666667%}.col-xl-1{width:8.33333333%}.col-xl-pull-12{right:100%}.col-xl-pull-11{right:91.66666667%}.col-xl-pull-10{right:83.33333333%}.col-xl-pull-9{right:75%}.col-xl-pull-8{right:66.66666667%}.col-xl-pull-7{right:58.33333333%}.col-xl-pull-6{right:50%}.col-xl-pull-5{right:41.66666667%}.col-xl-pull-4{right:33.33333333%}.col-xl-pull-3{right:25%}.col-xl-pull-2{right:16.66666667%}.col-xl-pull-1{right:8.33333333%}.col-xl-pull-0{right:auto}.col-xl-push-12{left:100%}.col-xl-push-11{left:91.66666667%}.col-xl-push-10{left:83.33333333%}.col-xl-push-9{left:75%}.col-xl-push-8{left:66.66666667%}.col-xl-push-7{left:58.33333333%}.col-xl-push-6{left:50%}.col-xl-push-5{left:41.66666667%}.col-xl-push-4{left:33.33333333%}.col-xl-push-3{left:25%}.col-xl-push-2{left:16.66666667%}.col-xl-push-1{left:8.33333333%}.col-xl-push-0{left:auto}.col-xl-offset-12{margin-left:100%}.col-xl-offset-11{margin-left:91.66666667%}.col-xl-offset-10{margin-left:83.33333333%}.col-xl-offset-9{margin-left:75%}.col-xl-offset-8{margin-left:66.66666667%}.col-xl-offset-7{margin-left:58.33333333%}.col-xl-offset-6{margin-left:50%}.col-xl-offset-5{margin-left:41.66666667%}.col-xl-offset-4{margin-left:33.33333333%}.col-xl-offset-3{margin-left:25%}.col-xl-offset-2{margin-left:16.66666667%}.col-xl-offset-1{margin-left:8.33333333%}.col-xl-offset-0{margin-left:0}.visible-xl{display:block!important}table.visible-xl{display:table}tr.visible-xl{display:table-row!important}td.visible-xl,th.visible-xl{display:table-cell!important}.visible-xl-block{display:block!important}.visible-xl-inline{display:inline!important}.visible-xl-inline-block{display:inline-block!important}.hidden-xl{display:none!important}}
+        /* Document and body */
+        body {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        /* keep full widget on smaller screens */
+        @media (max-width: 767px) {
+            body {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+		@media (max-width: 991px) {
+			h1 {
+				font-size: 32px;
+			}
+			h2 {
+				font-size: 28px;
+			}
+		}
+		@media (max-width: 630px) {
+			h1 {
+				font-size: 22px;
+			}
+			h2 {
+				font-size: 16px;
+			}
+		}
+
+        /* Fixs and ajusts */
+        .text-center{ text-align:center !important; }
+        .panel-body { padding: 0; }
+        .panel-body pre { margin: 0; }
+        .panel .panel {margin: 0; }
+        .panel-primary a { color: #00526e; }
+        .panel-primary a:hover { color: #ffffff; }
+         table.table, table.dataTable { margin: 0 !important; }
+         td{vertical-align: middle !important;
+             word-wrap: break-word;
+             -webkit-hyphens: auto;
+             -moz-hyphens: auto;
+             -ms-hyphens: auto;
+             -o-hyphens: auto;
+             hyphens: auto;
+         }
+        table.floatThead-table {
+            border-top: none;
+            border-bottom: none;
+            background-color: #F5F5F5;
+        }
+        .overflowx { overflow-x: auto; }
+        .navbar {
+            margin: 0;
+            border-radius: 0;
+        }
+        .img-responsive {
+            display: inline-block;
+        }
+
+        /* Footer */
+        footer{
+            border-top: #222222;
+            background-color: #333333;
+            color: #ffffff;
+            min-height: 230px;
+            padding-top: 20px;
+			padding-bottom: 70px;
+            margin-top: 40px;
+        }
+
+        footer h3{
+            margin-bottom: 25px;
+        }
+
+        footer a, footer a:hover, footer a:active, footer a:visited{
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        footer a:hover{
+            color:#008cba;
+        }
+
+        /* Controls */
+        #controls {
+            width: 250px;
+            position: fixed;
+            /*top:70px;
+            right:20px;*/
+            bottom:20px;
+            left:15px;
+            background: rgba(250, 250, 250, 0.90);
+            border: rgba(0, 0, 0, 0.75) solid 1px;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 10000;
+
+            opacity: .4;
+            -webkit-transition: opacity .5s;
+            -moz-transition: opacity .5s;
+            transition: opacity .5s;
+        }
+
+        #controls:hover { opacity: 1; }
+
+        #controls #controls-wrapper{
+            position: relative;
+            text-align: center;
+        }
+
+
+        /*[ Back to Top / #back-to-top ]*/
+        #back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 9999;
+            width: 45px;
+            height: 45px;
+            display: block;
+            background: #2c3e50;
+            background: rgba(0, 0, 0, 0.75);
+            font-size: 16px;
+            text-align: center;
+            line-height: 45px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #back-to-top:hover {
+            text-decoration: none;
+            background-color: #F90;
+            background: rgba(255, 153, 0, 0.75);
+        }
+        #back-to-top i {
+            color: #fff;
+        }
+
+        /* DataTables */
+        div.DTTT { margin-bottom: 0.5em; float: right; }
+        div.dataTables_wrapper { clear: both; }
+
+
+        /* Utilities */
+        .nomargin{ margin:0; }
+        .padding20 {padding: 20px;}
+        .lessmarginbottom20 { margin-bottom: -20px; }
+        .border-warning { outline: #e99002 solid 5px; }
+        .border-danger { outline: #f04124 solid 5px; }
+        .verybold{ font-weight: bolder; }
+        .outlineblack {
+            text-shadow:
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
+        }
+        </style>
+	</head>
+	<body id="body" data-spy="scroll" data-target=".navbar">
+
+	<header id="mainheader">
+		<nav id="main-navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainmenu-navbar-colapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+                    <a class="navbar-brand" href="#mainheader">SystemSnapshotWebServer</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="mainmenu-navbar-colapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#dashboard"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
+						<li><a href="#systeminfo"><i class="glyphicon glyphicon-info-sign"></i> System Info</a></li>
+						<li><a href="#hardware"><i class="glyphicon glyphicon-tower"></i> Hardware</a></li>
+						<li><a href="#networks"><i class="fa fa-wifi"></i> Networks</a></li>
+						<li><a href="#pnpdevices"><i class="fa fa-plug"></i> PnP Devices</a></li>
+						<li><a href="#processes"><i class="glyphicon glyphicon-tasks"></i> Processes</a></li>
+						<li><a href="#services"><i class="fa fa-cogs"></i> Services</a></li>
+						<li><a href="#autoruns"><i class="glyphicon glyphicon-play"></i> Autoruns</a></li>
+						<li><a href="#installedprograms"><i class="glyphicon glyphicon-wrench"></i> Programs</a></li>
+						<li><a href="#specialfiles"><i class="fa fa-files-o"></i> Files</a></li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="javascript:;">Version: <!--[VERSION]--></a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+		<div class="jumbotron text-center">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAQAAABpN6lAAAADRklEQVR4Ae2dP24aURDGf0TGtfE1TGMJLoCI261cURAu4rDIokCuYyMqy3bhNLkEhStScIEcIGA6lMYbyUIPilk7ZtloH+/7TTf2aPU+zc6bFe8PH0MIIUSbO3pU2OSImFtalNikxpAhNTYp0eKWmCM2qdDjjjbY8fbz7fi8iUlebcqh85X5ufJesKbO8tW3pM6a7uo/Jxw43yHTlTe24+3nm/G5syBZ2WfnazjfjDUj5x2xZua8Def77HwLO95+vhmfO4mzc+eLNrxrHp3v0YyPnO98q/hzO/5jfEIoA4QyQCgDhDJAvEOV6NUSZwOilfU3vJGzsfONnW8zvu98g63iB2/EV9kxVySe2RU7pErioZ2wMyIvBYgkgGaBj9JlzotpiTN/+hR7JHO6pNAhSTcPBUi3jv0KNAmFJiaXwWTAJSbHTIMQYMoxKZRpcm7YwEsBBuZYmpSz9QEFJ0MfIJQBIksRrBL9R6vmUQSzTINXBfjezzANZm2EqkX43s/eCD1sLUBUoM/df4l8wKQTjACdNz6H916AOd3d9wH23/Of59UHZOdAAkgAseaUG34Y9uRlEXwyx3LDafrw/5DY5qEA6bZMk+CGJAgBEq5DF+CbXoEUTrne+yJ4bQxfrXDASAC1wsJRosts76fBGV8pYdIKphFq2TXgjFA4swX4RRCkj7TCJIhXYEIlfU5oEBnW91KAvjmWxjYzn1phdYISQOsD/KgB2dcHBDANTqlgchlMK9zD5D4YAe4waQcjQJsUYhZ7L8CCGAt1gmqEJIAEEDWGPBo29rIIjs2xDKmRQp1lID+O1jAZBdMIDe0a8KIKEPgrAHVGe14Ev6cWQbXCaoQkgAQQMc+8mObjhgl7JM/EpNAOZstMW+cHmPSC2TbXw6Ti1cbJAez6hxE45MyTrbMnO9s6q93jQhkgdIhKaMfoVEI/SCn7+oACk//6gIKT//qAgpP7+gB/TH2ABNCxuiEfrDwI+2jtE3aMTpcXygChDBDKAKEMEPM3L1z8zZqh8w7fuXCx6XyLd+MXzts043Ona1x5ecDEuHKzxtJYl3dhXLlZNq/MtONj9/yyHZ8/X7g3Lj21Ll2tM0q5dLVbgEtXhRBC/AWddWLcvoWOHAAAAABJRU5ErkJggg==" width="128" height="128" class="img-responsive" />
+            <h1>System Info Snapshot</h1>
+            <p class="lead"><i class="fa fa-quote-left"></i> Collect the computer and system info at a given time in order to track issues or problems.<br>
+            Share this report with your friend or someone of your trust who can help you detect your computer problem at a given moment. <i class="fa fa-quote-right"></i></p>
+			<h2><!--[TITLE]--></h2>
+		</div>
+	</header>
+
+    <div id="controls">
+        <div id="controls-wrapper">
+            <!--<p><strong>Controls</strong></p>-->
+            <div class="report">
+                <a href="javascript:;" class="navigation first" data-toggle="tooltip" data-placement="top" title="Go to the first"><i class="fa fa-angle-double-left pull-left"></i></a>
+                <a href="javascript:;" class="navigation back" data-toggle="tooltip" data-placement="top" title="Go back"><i class="fa fa-angle-left pull-left"></i></a>
+
+                <span class="text">Dashboard</span>
+
+                <a href="javascript:;" class="navigation last" data-toggle="tooltip" data-placement="top" title="Go to the last"><i class="fa fa-angle-double-right pull-right"></i></a>
+                <a href="javascript:;" class="navigation next" data-toggle="tooltip" data-placement="top" title="Go next"><i class="fa fa-angle-right pull-right"></i></a>
+            </div>
+
+            <div class="warnings">
+                <a href="javascript:;" class="navigation first" data-toggle="tooltip" data-placement="top" title="Go to the first"><i class="fa fa-angle-double-left pull-left"></i></a>
+                <a href="javascript:;" class="navigation back" data-toggle="tooltip" data-placement="top" title="Go back"><i class="fa fa-angle-left pull-left"></i></a>
+
+                <span class="text-warning"><span class="text">0</span> of <strong class="text-total">0</strong></span>
+
+                <a href="javascript:;" class="navigation last" data-toggle="tooltip" data-placement="top" title="Go to the last"><i class="fa fa-angle-double-right pull-right"></i></a>
+                <a href="javascript:;" class="navigation next" data-toggle="tooltip" data-placement="top" title="Go next"><i class="fa fa-angle-right pull-right"></i></a>
+
+                <i class="fa fa-exclamation-triangle pull-right" data-toggle="tooltip" data-placement="bottom" title="Warnings">&nbsp;&nbsp;</i>
+            </div>
+
+            <div class="problems">
+                <a href="javascript:;" class="navigation first" data-toggle="tooltip" data-placement="top" title="Go to the first"><i class="fa fa-angle-double-left pull-left"></i></a>
+                <a href="javascript:;" class="navigation back" data-toggle="tooltip" data-placement="top" title="Go back"><i class="fa fa-angle-left pull-left"></i></a>
+
+                <span class="text-danger"><span class="text">0</span> of <strong class="text-total">0</strong></span>
+
+                <a href="javascript:;" class="navigation last" data-toggle="tooltip" data-placement="top" title="Go to the last"><i class="fa fa-angle-double-right pull-right"></i></a>
+                <a href="javascript:;" class="navigation next" data-toggle="tooltip" data-placement="top" title="Go next"><i class="fa fa-angle-right pull-right"></i></a>
+                <i class="fa fa-times pull-right" data-toggle="tooltip" data-placement="bottom" title="Problems">&nbsp;&nbsp;</i>
+            </div>
+        </div>
+    </div>
+	
+	<div class="container-fluid">
+        <div id="dashboard" class="panel panel-primary">
+            <div class="panel-heading"><h1><i class="glyphicon glyphicon-dashboard pull-right"></i>Dashboard</h1></div>
+            <div class="panel-body">
+                <!--DASHBOARD-->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="alert alert-warning text-center nomargin">
+                            <h1><i class="fa fa-exclamation-triangle fa-3x"></i></h1>
+                            <h2>Warning(s)</h2>
+                            <h1 id="dashboard-warnings">0</h1>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="alert alert-danger text-center nomargin">
+                            <h1><i class="fa fa-times fa-3x"></i></h1>
+                            <h2>Problem(s)</h2>
+                            <h1 id="dashboard-problems">0</h1>
+                        </div>
+                    </div>
+                </div>
+                <div id="actions" class="panel panel-primary">
+                    <div class="panel-heading"><h1><i class="glyphicon glyphicon-wrench pull-right"></i>Actions and page options</h1></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-4 col-lg-3">
+                                <button id="EnhancementTablesBtn" class="btn btn-default btn-lg btn-block"><i class="fa fa-table"></i> Enhancement tables</button>
+                            </div>
+                            <div class="col-sm-4 col-lg-3">
+                                <button id="ToggleSectionsBtn" class="btn btn-default btn-lg btn-block" onclick="ToggleAllSections(0);"><i class="fa fa-eye-slash"></i> Toggle sections</button>
+                            </div>
+                            <div class="col-sm-4 col-lg-3">
+                                <button id="ShowSectionsBtn" class="btn btn-default btn-lg btn-block" onclick="ToggleAllSections(1);"><i class="fa fa-toggle-on"></i> Show sections</button>
+                            </div>
+                            <div class="col-sm-4 col-lg-3">
+                                <button id="HideSectionsBtn" class="btn btn-default btn-lg btn-block" onclick="ToggleAllSections(-1);"><i class="fa fa-toggle-off"></i> Hide sections</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<div id="systeminfo" class="panel panel-primary">
+			<div class="panel-heading"><h1><i class="glyphicon glyphicon-info-sign pull-right"></i><a href="javascript:;" class="colapse"><i class="fa fa-chevron-circle-down"></i></a> System Info</h1></div>
+			<div class="panel-body lessmarginbottom20">
+			    <!--[SYSTEMINFO]-->
+			</div>
+		</div>
+
+        <div id="hardware" class="panel panel-primary">
+            <div class="panel-heading"><h1><i class="glyphicon glyphicon-tower pull-right"></i><a href="javascript:;" class="colapse"><i class="fa fa-chevron-circle-down"></i></a> Hardware</h1></div>
+            <div class="panel-body lessmarginbottom20">
+                <!--[HARDWARE]-->
+            </div>
+        </div>
+
+        <div id="networks" class="panel panel-primary">
+            <div class="panel-heading"><h1><i class="fa fa-wifi pull-right"></i><a href="javascript:;" class="colapse"><i class="fa fa-chevron-circle-down"></i></a> Networks <span class="count"></span></h1></div>
+            <div class="panel-body">
+                <!--[NETWORKS]-->
+            </div>
+        </div>
+
+        <div id="pnpdevices" class="panel panel-primary">
+            <div class="panel-heading"><h1><i class="fa fa-plug pull-right"></i><a href="javascript:;" class="colapse"><i class="fa fa-chevron-circle-down"></i></a> PnP Devices <span class="count"></span></h1></div>
+            <div class="panel-body">
+                <!--[PNPDEVICES]-->
+            </div>
+        </div>
+		
+		<div id="processes" class="panel panel-primary">
+			<div class="panel-heading"><h1><i class="glyphicon glyphicon-tasks pull-right"></i><a href="javascript:;" class="colapse"><i class="fa fa-chevron-circle-down"></i></a> Processes <span class="count"></span></h1></div>
+            <div class="panel-body">
+                <!--[PROCESSES]-->
+			</div>
+		</div>
+		
+		<div id="services" class="panel panel-primary">
+			<div class="panel-heading"><h1><i class="fa fa-cogs pull-right"></i><a href="javascript:;" class="colapse"><i class="fa fa-chevron-circle-down"></i></a> Services <span class="count"></span></h1></div>
+            <div class="panel-body">
+                <!--[SERVICES]-->
+            </div>
+		</div>
+
+        <div id="autoruns" class="panel panel-primary">
+            <div class="panel-heading"><h1><i class="glyphicon glyphicon-play pull-right"></i><a href="javascript:;" class="colapse"><i class="fa fa-chevron-circle-down"></i></a> Autoruns <span class="count"></span></h1></div>
+            <div class="panel-body">
+                <!--[AUTORUNS]-->
+            </div>
+        </div>
+
+        <div id="installedprograms" class="panel panel-primary">
+            <div class="panel-heading"><h1><i class="glyphicon glyphicon-wrench pull-right"></i><a href="javascript:;" class="colapse"><i class="fa fa-chevron-circle-down"></i></a> Installed Programs <span class="count"></span></h1></div>
+            <div class="panel-body">
+                <!--[PROGRAMS]-->
+            </div>
+        </div>
+
+        <div id="specialfiles" class="panel panel-primary">
+            <div class="panel-heading"><h1><i class="fa fa-files-o pull-right"></i><a href="javascript:;" class="colapse"><i class="fa fa-chevron-circle-down"></i></a> Special Files <span class="count"></span></h1></div>
+            <div class="panel-body">
+                <!--[SPECIALFILES]-->
+            </div>
+        </div>
+	</div>
+
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="verybold outlineblack">SystemSnapshotWebServer</h3>
+                    <p>A portable free and open source project.<br>
+                        Written by: Andrzej Piotrowski<br>
+                        Version: <!--[VERSION]--></p>
+                </div>
+                <div class="col-xs-6 col-lg-offset-2 col-sm-3 col-lg-2">
+                    <div id="writtenwith" class="pull-right">
+                        <h3 class="verybold outlineblack">Written with</h3>
+                        <h4># CSharp</h4>
+                        <h4><i class="fa fa-html5"></i> HTML5</h4>
+                        <h4><i class="fa fa-css3"></i> CSS</h4>
+                        <h4><i class="fa fa-code"></i> JavaScript</h4>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </footer>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="http://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/floatthead/1.2.10/jquery.floatThead.min.js"></script>
+	<!--<script src="http://cdn.datatables.net/colvis/1.1.2/js/dataTables.colVis.min.js"></script>-->
+	<script src="http://cdn.datatables.net/plug-ins/1.10.6/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+	<script type="text/javascript">
+    /*
+    * Global Variables
+    */
+    var pageOptions = {
+        'EnhancementTables' : false,
+        'NavbarHeight'      : 0,
+        'TotalTableItems'   : 0
+    };
+
+    var messages = {
+        'warnings' : {
+            'index' : -1,
+            'items' : []
+        },
+        'problems' : {
+            'index' : -1,
+            'items' : []
+        }
+    };
+
+    /*
+    * Global Functions
+    */
+    function GoToMessage(oldindex, index, isWarning)
+    {
+        var obj = messages[isWarning ? 'warnings' : 'problems'];
+        if(index < 0 || index >= obj.items.length)
+            return;
+
+        var item = obj.items[index];
+
+        var panel = $(item['element'].closest('div.panel')).find('.panel-heading i.fa-chevron-circle-left:first');
+        if(panel.length > 0)
+        {
+            $(panel).parent().click();
+        }
+
+        if(item['hastab'])
+        {
+            $('a[href="#'+$(item['tabelement']).attr('id')+'"]').click();
+        }
+
+        if(oldindex > -1)
+        {
+            $(obj.items[oldindex]['highlightelement']).removeClass('border-' + (isWarning ? 'warning' : 'danger'));
+        }
+
+        $('#controls .'+(isWarning ? 'warnings' : 'problems')+' .text').text(index+1);
+
+
+        $(item['highlightelement']).addClass('border-' + (isWarning ? 'warning' : 'danger'));
+        var top = Math.max(0, $(item['highlightelement']).offset().top - pageOptions['NavbarHeight'] - 100);
+        $('body, html').stop().animate({
+            scrollTop: top
+        }, 600, 'swing');
+    }
+
+    function GoToWarning(oldindex, index){
+        GoToMessage(oldindex, index, true);
+    }
+    function GoToProblem(oldindex, index){
+        GoToMessage(oldindex, index, false);
+    }
+
+    function EnhancementTables(confirmMsg)
+    {
+        if(pageOptions['EnhancementTables']) return;
+        if(confirmMsg) {
+            if (!confirm('This option will enhancement all the tables by adding:\n- Fixed Headers;\n- Column sorting;\n- Filters and data searching.\n\nThis action can be slow when having huge tables with lots of data, are you sure you want to enable this?')) return;
+        }
+
+        $('#EnhancementTablesBtn').attr('disabled', 'disabled').append(' <small><i class="fa fa-check text-success"></i></small>')
+
+        $('table.table').each(function(){
+            if(confirmMsg)
+                $(this).unwrap();
+
+            $(this).find('thead tr:first').addClass('active');
+            var table = $(this).dataTable( {
+                "paging":   false,
+                "info":     false,
+                //"scrollX":  true,
+                "lengthMenu": [[10, 25, 50, 100, 200, -1], [10, 25, 50, 100, 200, "All"]]
+            });
+
+            $(table).floatThead({
+                scrollingTop: pageOptions['NavbarHeight']
+            }).wrap('<div class="table-responsive"></div>');
+
+
+        });
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var element = $($(e.target).attr('href'));
+            if(!element.length)
+                return;
+
+            element.find('table.table:first').floatThead("reflow");
+        });
+
+        pageOptions['EnhancementTables'] = true;
+    }
+
+    function ToggleAllSections(visibility)
+    {
+        if(visibility == -1) {
+            $('.panel-heading a.colapse i.fa-chevron-circle-down').parent().click();
+        }
+        else if(visibility == 0) {
+            $('.panel-heading a.colapse').click();
+        }
+        else if(visibility == 1) {
+            $('.panel-heading a.colapse i.fa-chevron-circle-left').parent().click();
+        }
+    }
+
+    function updateResize()
+    {
+        pageOptions['NavbarHeight'] = parseInt($('#main-navbar').css("height"));
+        $('body').css('margin-top', pageOptions['NavbarHeight']);
+    }
+
+    /*
+    * Document Ready functions
+    */
+	$(function($) {
+        /*
+        * Attributions and global assignments
+        */
+        $('[data-toggle="tooltip"]').tooltip();
+        updateResize();
+
+		//jQuery for page scrolling feature on nav click
+		$('.navbar a').on('click', function(event) {
+			var $anchor = $(this);
+			$('html, body').stop().animate({
+				scrollTop: Math.max(0, $($anchor.attr('href')).offset().top)
+			}, 1000, 'swing');
+			event.preventDefault();
+		});
+
+        /*
+        * Update items count for each report
+        */
+        $('.panel-body').each(function(index, value){
+            var items = $(this).find("tbody tr").length;
+            if(items)
+            {
+                pageOptions['TotalTableItems'] += items;
+                $(this).closest('.panel').find('.panel-heading .count').text("("+items+")");
+            }
+        });
+
+        /*
+        * Controls events
+        */
+        // Update current report on controls
+        $('.navbar li').on('activate.bs.scrollspy', function () {
+            $('#controls .report .text').html($(this).children().html());
+        });
+
+        // Events for navigation
+        $('#controls .report a').on('click', function(event) {
+            var text = $(this).parent().find('.text:first').text();
+            if($(this).hasClass('first'))
+            {
+                $('ul.nav:first a:first').click();
+                return;
+            }
+            if($(this).hasClass('back') || $(this).hasClass('next'))
+            {
+                var element = $("ul.nav:first li:contains('"+text+"')");
+                if(!element.length)
+                    return;
+
+                var newelement = $(this).hasClass('back') ? element.prev() : element.next();
+                if(!newelement.length)
+                    return;
+
+                $(newelement).children().click();
+
+                return;
+            }
+            if($(this).hasClass('last'))
+            {
+                $('ul.nav:first a:last').click();
+                return;
+            }
+
+        });
+
+        $('#controls .warnings a, #controls .problems a').on('click', function() {
+            var isWarning = $(this).closest('div').hasClass('warnings');
+            var obj = messages[isWarning ? 'warnings' : 'problems'];
+            var oldindex = obj.index;
+            var newindex = oldindex;
+
+            if($(this).hasClass('first'))
+            {
+                newindex = 0;
+            }
+            else if($(this).hasClass('back'))
+            {
+                if(newindex > 0)
+                {
+                    newindex--;
+                }
+            }
+            else if($(this).hasClass('next'))
+            {
+                if(newindex+1 < obj.items.length)
+                {
+                    newindex++;
+                }
+            }
+            else if($(this).hasClass('last'))
+            {
+                newindex = obj.items.length-1;
+            }
+
+            obj.index = newindex;
+
+            GoToMessage(oldindex, newindex, isWarning);
+        });
+
+        $('a.colapse').on('click', function() {
+            var isVisible = $(this).children().hasClass('fa-chevron-circle-down');
+            $(this).closest('div.panel').find('.panel-body').slideToggle();
+
+            if(isVisible)
+            {
+                $(this).children().removeClass('fa-chevron-circle-down').addClass('fa-chevron-circle-left');
+            }
+            else
+            {
+                $(this).children().removeClass('fa-chevron-circle-left').addClass('fa-chevron-circle-down');
+            }
+        });
+
+
+        /*
+        * Build messages from html elements
+        */
+        $('[class*="progress-bar-warning"], tr[class*="warning"], [class*="progress-bar-danger"], tr[class*="danger"]').each(function(){
+            var tabelement = $(this).closest('div[class*="tab-pane"]');
+            var hastab = (tabelement.length > 0);
+            var highlightelement = this;
+            if($(this).hasClass('progress-bar'))
+            {
+                highlightelement = $(this).closest('div[class="well"]');
+            }
+            var item = {
+                'element'           : this,
+                'highlightelement'  : highlightelement,
+                'hastab'            : hastab,
+                'tabelement'        : tabelement
+            };
+
+            if($(this).is('[class*="warning"]'))
+                messages.warnings.items.push(item);
+            else
+                messages.problems.items.push(item);
+        });
+
+        /*
+        * Update Html Elements
+        */
+        $('#controls .report .text').html($('ul.nav a:first').html());
+        $('#dashboard-warnings, .warnings .text-total').text(messages.warnings.items.length);
+        $('#dashboard-problems, .problems .text-total').text(messages.problems.items.length);
+
+        boxes = $('.hardware_hdd > .well:first-child');
+        maxHeight = Math.max.apply(
+                Math, boxes.map(function() {
+                    return $(this).height();
+                }).get());
+        boxes.css('min-height', (maxHeight+90)+'px');
+
+        if((window.location.protocol == 'file:' && pageOptions['TotalTableItems'] <= 4000) || pageOptions['TotalTableItems'] <= 1000) {
+            EnhancementTables(false);
+        }
+        else
+        {
+            $('table.table').wrap('<div class="table-responsive"></div>');
+            // Other buttons events
+            $('#EnhancementTablesBtn').click(function(){
+                EnhancementTables(true);
+            });
+        }
+
+        // Call functions
+		enableBackToTop ();
+    });
+
+    /*
+    * Back to top functions
+    */
+	function enableBackToTop () {
+		var backToTop = $('<a>', { 'id': 'back-to-top', 'href': '#top' });
+		var icon      = $('<i>', { 'class': 'fa fa-chevron-up' });
+
+		backToTop.appendTo ('body');
+		icon.appendTo (backToTop);
+
+		backToTop.hide();
+
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 150) {
+				backToTop.fadeIn ();
+			} else {
+				backToTop.fadeOut ();
+			}
+		});
+
+		backToTop.click (function (e) {
+			e.preventDefault();
+
+			$('body, html').animate({
+				scrollTop: 0
+			}, 600, 'swing');
+		});
+    }
+
+    $(window).resize(updateResize);
+    </script>
+	</body>
+</html>
