@@ -60,7 +60,7 @@ namespace SystemSnapshotWebServer
         /// </summary>
         public void WriteToFile()
         {
-            var defaultFilename = string.Format("SystemSnapshotWebServer_{0}.html", DateTime.Now).
+            var defaultFilename = string.Format("SystemSnapshot_{0}.html", DateTime.Now).
                 Replace(':', '-').
                 Replace('/', '-').
                 Replace(' ', '_');;

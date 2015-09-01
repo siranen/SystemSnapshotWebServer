@@ -25,6 +25,11 @@ namespace SystemSnapshotWebServer.GUI
         /// </summary>
         private readonly Button[] Buttons;
 
+        public int seconds;
+        public int minutes;
+        public int hours;
+        public bool paused;
+
         /// <summary>
         /// Gets the datetime when report generation process started
         /// </summary>
@@ -270,6 +275,61 @@ namespace SystemSnapshotWebServer.GUI
         }
 
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+               if (paused != true)
+   {
+      if ((lblHr.Text != "")&&(lblMin.Text != "") &&(lblSec.Text != 
+           ""))
+      {
+         autoClock.Enabled = true;
+         button1.Enabled = true;
+         lblSec.Enabled = false;
+         try
+         {
+         minutes = System.Convert.ToInt32(lblMin.Text);
+         seconds = System.Convert.ToInt32(lblSec.Text);
+         hours = System.Convert.ToInt32(lblHr.Text);
+         }
+         catch (Exception ex)
+         {
+            MessageBox.Show(ex.Message);
+         }
+      }
+      else
+      {
+         MessageBox.Show("Incomplete settings!");
+      }
+   }
+   else
+   {
+      autoClock.Enabled = true;
+   }
+
+        }
+
+        private void autoClock_Tick(object sender, EventArgs e)
+        {
+
+      // Verify if the time didn't pass.
+      if ((minutes == 0) && (hours == 0) && (seconds == 0))
+      {
+         // If the time is over, clear all settings and fields.
+         // Also, show the message, notifying that the time is over.
+         autoClock.Enabled = false;
+         button1.Enabled = false;
+         lblSec.Clear();
+         lblMin.Clear();
+         lblHr.Enabled = true;
+         lblSec.Enabled = true;
+         lblMin.Enabled = true;
+         lblHr.Enabled = true;
+         lblHr.Text = "00";
+         lblMin.Text = "00";
+         lblSec.Text = "00";
+      }
+        }
 
        
     }

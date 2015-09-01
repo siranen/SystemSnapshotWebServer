@@ -5,9 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noindex, nofolllow">
-        <meta name="author" content="Tiago Conceição">
+        <meta name="author" content="Andrzej Piotrowski">
         <meta name="description" content="Collect the computer and system info at a given time in order to track issues or problems.">
-        <title>SystemSnapshotWebServer - <!--[TITLE]--></title>
+        <title>System Snapshot Web Server - <!--[TITLE]--></title>
         <link href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/yeti/bootstrap.min.css" rel="stylesheet">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="http://cdn.datatables.net/plug-ins/1.10.6/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
@@ -51,7 +51,7 @@
         .panel-body pre { margin: 0; }
         .panel .panel {margin: 0; }
         .panel-primary a { color: #00526e; }
-        .panel-primary a:hover { color: #ffffff; }
+        .panel-primary a:hover { color: #FDD017; }
          table.table, table.dataTable { margin: 0 !important; }
          td{vertical-align: middle !important;
              word-wrap: break-word;
@@ -70,7 +70,11 @@
         .navbar {
             margin: 0;
             border-radius: 0;
+           
         }
+         .navbar a:hover {
+                color: #FDD01;
+            }
         .img-responsive {
             display: inline-block;
         }
@@ -218,8 +222,8 @@
             <img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJsAAACcCAMAAABfuikGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAACdrsChssCltsStusSxusSxvsi5wsi9xszBxszFyszJztDR0tDV1tTd2tTh2tTh3tjp4tjx5tz16tz97uEB8uEJ9uUN+uUR+uUV/ukaAukiBu0mCu0uDvEyDvEyEvE6FvU+GvVCGvVGHvlKIvlSJv1aKv1eLwFmMwFqNwVyOwV2Pwl+QwmGRw2KSw2OTxGSTxGWUxGaVxWiWxWqYxmyZxm2ax3GcyHSeyXagynihynqiy3ykzH+mzYCmzYKozois0I6v0Y+w0pKy05Sz05W01Jm31Zu41p251qS+2anC2qzE267F3LPI3bfL37nM37rN4L7P4b/Q4cLS4sXU48fV5MnX5cvY5c7a5s/b59Hc59Te6NXf6djh6tri6tzj697k697l7ODm7OHn7ePo7eTo7eTp7ufq7ufr7+jr7+ns7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGu4g7EAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGHRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjb8jGPfAAAHPklEQVR4Xu2c+VsTRxjHSbjkRsQoKoIiLRpQPBCBgPawF71brS21Vtti2f//93Te2e8m787OzE5mJ9k8T/P5wYd9d46Pe82xkx1q9i8DNz+0bo360vRYpUeMTS/VG6g4TdZttYpMPaW6iuoZilvjHNKWwPgBJBLSbhNIVhIT0ADcbQVJSuQ6VCTMbRL7S4UfurbbMPaWzDB0BC037OoDINR265OjRrSOHNxKvkHTJNdc7LaMaJ+wLKXghljfIKViN/WMXpC7eshFVJwQn1Vy20cE9NyMuIDKwT7FyG0cgZgtCveeLVQfM04hcsN2jNrg9owDCMRQRLitYlPyUKYrhYdQkFCXSbjx/lop11oCv+aqYlu4YUsSJyoLSEjE5lCzgQ1iMU5TFovQIEQ3fai5iQ0CaUoDGsQmudWwQSBJaUCDqJEb71IiSWlAg5gkN/wtQZLSgIZk4OYONCQDN3egIVHd+omBmx8DNz8Gbn4M3PwYuPkxcPNj4ObH/81t8QE6ijGHW8r0lSuh3aYfw0hhZxoJOiCo2/gOTLRsd/piMaDbeThYWEBSN4K5OZgRndgFcpMzoG6MIks+Ydw2UK8TG8iUSwi3MVTqTHrq20gAN49Z2MvIaqe42y3U1xF1ZLZS2M3wrN1enh+pVEbml7cRUHiC7DaKuj1BXZwVZZ1EdQU7OIfYaaGg2y5qanMLexSyZ57PgOsp5pY5oXzqWOEikrTYww4jZjeU0AlXkNVAagmDgM/P6wjotp+7HKcqX+61uYS4gXBuV5HPylUkBvaHcDC3KWTLYQrJAaJ6Qrk5t+CjyBBzB1Etgdw6WMDBlqYIbGc1jJt7v0eQPnII6gji5nitJaSuufMIagjhdg05nEndrYhpCOCWfs3uBH/OzSCWxexmBeVKnFZAjn76+6tGKyW9726BWBY/txEUSzit56t+GQmeYatS4T0T49DQz42vhUDIzkekFr3BlgCZiUcIZfBzQ6mEpefRZk+qRe+wKaghO4FQBi83vuwQISt338duX2CbQHbCNB3h5cZO6TpCNtb+itX+mEWAWEcBAtNJ9XJDmYTDTVp7HatFKQd+qyKkUtQNEQuzr6B2jABAAQQiKj5u8yhScBMhM+M/Qu2N0jrdRBECwySJj1sdRQpy+x/DX0Mt2kUkgfVH7iKk4OPG1swjYuYzmEXfINAGRRCIKPi4oUACESNPYRa9zc6roggCEQWzG7JZ2UFaEztnUIs043g2gEREoZjbGtIa2DiFWfSd5lmzhkIEiCgUc7N0DAXX/oRZ9E7XsrGZTkQUirlZF+4vnMAsirTzC6zlQ0ShmBuSSha+/+flJ6wLPPUCYlH0g/5Rg0IECCiEczuWGj835uLN0W/lNvH3UhxSYGMaRBTCndO3MDk9vjeSdCZjniKFwgwKESCiUMyNNzYvYSJ4/Xw17kxKfjI0HmxpJyIKxdz4M2QXKiqnpmFYl58hj5FWwg4Vpz1IUCjw7DWDAglEJNVW28l5YRzzowgCEYWAbpXhr+DDeJ9aD54CRQiOEFHwcdtEkYL0Zc6eGwkfY1cW1kcyTGD6uLG+pTLzPJF0JBN+Mb+XZLeCYTDj42Y8qaIDzp4kgn8tQx0UQCCiEtiNN6KC54jqQAEEIipebux9fObALCWjKsGvlt9kdmsMeA6FEgi1WUsar+jsNkI6kJ0wTd95ufGCs+14q0f5OQI6lpCdQCiDn9t9lEogxHgQTzGc2Hp3yEwYRlm+bnw++TpijD0aJpzZ3kPyVzTGcaSfG/9v66Yddk6i31JtrULRuUHkzEf7ttE+c36IrITPnCqyOpAz2srCmgTLYQvi1uRzVw7MIpvEkjeIm+vChZjUWhLbG94wbp28mEm/lrFN9gRyazp/MYC3KTnTnqHcLLdbCja4IhDVE8zN7W5N3aF5l0I4t+aR7dqRDPPnGmH/AXhAt9xDpxw0wipndnPhEapoYVnpcAVJ0tjkirlpltV8gD0KrCuZxiJX0E275ueG0vpXb2CHFrNcUbfsaY3ZXa/NT0zM19azq4JUjHKF3Sofogp/THLF3QL8QtogF8At9abXD71cCDfLXeiKVi6MW2VU/30jd3RygdwyjbiJ6Un8oaKRC+ZWqcyhFgs0KeMuF9BN3BT3UI8WmqImnOWCugkm0r9daHGfdT5d5UK7EXP1I9QmadxRxyuOct1wy8dNrhw3N7mS3IxybH5njNysb/O6Rb6cGGKnvzXRO3Ll5Lcm8tYAdwm+coiTyG2QW/7K7u6QI3dAbqXcDIRdTvyhfEunp9jk8C0d8zunbmORwzeISjupNjn6l9w6mj8Li0lOrtAgN+VbYT3FJEeQW7bv1EMsctKtxCvOJhe7lfrVTaNc7JY8jMvBJAe3Tn6CEB6DXOJW6iVnkGu59eGRa7v13zXH3PrubuVupbZeGrm0W6nfZM7MWihugr79lnVMo355GtMX3Wd05tJt/Uc1tW59QbP5H/6G6kOJrGZFAAAAAElFTkSuQmCC
 " width="128" height="128" class="img-responsive" />
-            <h1>System Snapshot Web Result</h1>
-            <p class="lead"><i class="fa fa-quote-left"></i> Collect the computer and system info at a given time in order to track issues or problems.<br><i class="fa fa-quote-right"></i>
+            <h1>System Snapshot Web</h1>
+            <p class="lead"><i class="fa fa-quote-left"></i> Collect the computer and system info at a given time in order to track issues or problems<i class="fa fa-quote-right"></i>
             </p>
             <h2><!--[TITLE]--></h2>
         </div>
@@ -376,6 +380,7 @@ iVBORw0KGgoAAAANSUhEUgAAAJsAAACcCAMAAABfuikGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
                 <div class="col-sm-6">
                     <h3 class="verybold outlineblack">SystemSnapshotWebServer</h3>
                     <p>A portable free and open source project.<br>
+                        <br>http://siranen.github.io/SystemSnapshotWebServer/</br>
                         Written by: Andrzej Piotrowski<br>
                         Version: <!--[VERSION]--></p>
                 </div>
@@ -398,7 +403,7 @@ iVBORw0KGgoAAAANSUhEUgAAAJsAAACcCAMAAABfuikGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="http://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/floatthead/1.2.10/jquery.floatThead.min.js"></script>
-    <!--<script src="http://cdn.datatables.net/colvis/1.1.2/js/dataTables.colVis.min.js"></script>-->
+    <script src="http://cdn.datatables.net/colvis/1.1.2/js/dataTables.colVis.min.js"></script>-->
     <script src="http://cdn.datatables.net/plug-ins/1.10.6/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 
     <script type="text/javascript">
