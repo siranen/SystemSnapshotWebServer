@@ -111,6 +111,16 @@ namespace SystemSnapshotWebServer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo {
+            get {
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 4loot Toolbar
         ///Adssite ToolBar
         ///Allin1Convert Toolbar
@@ -178,8 +188,7 @@ namespace SystemSnapshotWebServer.Properties {
         ///        &lt;meta name=&quot;robots&quot; content=&quot;noindex, nofolllow&quot;&gt;
         ///        &lt;meta name=&quot;author&quot; content=&quot;Tiago Conceição&quot;&gt;
         ///        &lt;meta name=&quot;description&quot; content=&quot;Collect the computer and system info at a given time in order to track issues or problems.&quot;&gt;
-        ///        &lt;title&gt;SystemSnapshotWebServer - &lt;!--[TITLE]--&gt;&lt;/title&gt;
-        ///     [rest of string was truncated]&quot;;.
+        ///        &lt;title&gt;SystemSnapshotWebServer - &lt;!--[TITLE]--&gt;&lt;/title&gt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string template {
             get {

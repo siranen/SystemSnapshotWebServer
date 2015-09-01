@@ -256,24 +256,29 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.Enabled = false;
             this.btnAdd.Location = new System.Drawing.Point(15, 177);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Visible = false;
             // 
             // btnLogin
             // 
+            this.btnLogin.Enabled = false;
             this.btnLogin.Location = new System.Drawing.Point(96, 177);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 17;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Visible = false;
             // 
             // listBox1
             // 
+            this.listBox1.Enabled = false;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Items.AddRange(new object[] {
@@ -282,24 +287,29 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(156, 84);
             this.listBox1.TabIndex = 18;
+            this.listBox1.Visible = false;
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(269, 302);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 33);
             this.button1.TabIndex = 19;
             this.button1.Text = "Time";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(269, 344);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(112, 33);
             this.button2.TabIndex = 20;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             // 
             // FrmMain
             // 

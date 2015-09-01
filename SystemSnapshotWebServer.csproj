@@ -50,7 +50,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>outlineCPU.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -82,9 +82,8 @@
       <HintPath>Resources\libraries\NHttp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="OpenHardwareMonitorLib, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\OpenHardwareMonitorLib.dll</HintPath>
+    <Reference Include="OpenHardwareMonitorLib">
+      <HintPath>..\HWMoniTWPF\Libs\OpenHardwareMonitorLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -188,8 +187,9 @@
     <EmbeddedResource Include="Resources\libraries\OpenHardwareMonitorLib.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="outlineCPU.ico" />
+    <Content Include="logo.ico" />
     <Content Include="Resources\data\malware.txt" />
+    <Content Include="Resources\images\logo.png" />
     <None Include="Resources\images\cloud.png" />
     <None Include="Resources\images\eye.png" />
     <EmbeddedResource Include="Resources\libraries\NHttp.dll" />
