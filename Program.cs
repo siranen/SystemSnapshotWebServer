@@ -2,8 +2,7 @@
  * SystemSnapshotWebServer
  * Author: Andrzej Piotrowski
  * 
- * http://SystemSnapshotWebServer.com/
- * 
+ * http://SystemSnapshotWebServer.com/ 
  */
 
 using System;
