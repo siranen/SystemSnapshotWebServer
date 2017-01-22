@@ -1,4 +1,7 @@
 # SystemSnapshotWebServer
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/09a3029267054036b8831dd0eaecdc1a)](https://www.codacy.com/app/siranen/SystemSnapshotWebServer?utm_source=github.com&utm_medium=referral&utm_content=siranen/SystemSnapshotWebServer&utm_campaign=badger)
+
 Collect the computer and system info at a given time in order o track issues or problems
 
 ### Screen shots
